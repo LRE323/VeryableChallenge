@@ -1,12 +1,14 @@
-package com.veryable.android
+package com.veryable.android.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.veryable.android.R
+import com.veryable.android.activity.DetailsActivity
 import com.veryable.android.model.Account
 
 class CustomAdapter :
@@ -14,9 +16,6 @@ class CustomAdapter :
 
     // The list of accounts retrieved from the network, initially empty.
     private val dataSet: MutableList<Account> = mutableListOf()
-
-    // The onClickListener for each account item.
-    private val listener: View.OnClickListener = View.OnClickListener {  }
 
     /**
      * Called when RecyclerView needs a new RecyclerView.ViewHolder of the given type to represent
@@ -37,8 +36,7 @@ class CustomAdapter :
      */
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
-        // Get element from your dataset at this position and replace the contents of the view with
-        // that element.
+        // Update the contents to reflect the item at the give position.
         holder.bind(dataSet[position])
     }
 
@@ -58,7 +56,7 @@ class CustomAdapter :
         // Remove all values in the list, so there are no duplicates.
         dataSet.clear()
 
-        // Add all the values from the list to the dataset
+        // Add all the values from the list to the dataset.
         dataSet.addAll(accounts)
 
         // Notify the observers.
@@ -67,32 +65,45 @@ class CustomAdapter :
 
     inner class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        // The UI objects that will be updated with account details.
-        private val accountName: TextView = view.findViewById(R.id.accountName)
-        private val accountDescription: TextView = view.findViewById(R.id.accountDescription)
-        private val accountTransferType: TextView = view.findViewById(R.id.accountTransferType)
-        private val accountImage: ImageView = view.findViewById(R.id.accountImage)
+        // The UI objects that will display account details.
+        private val tvAccountName: TextView = view.findViewById(R.id.accountName)
+        private val tvAccountDescription: TextView = view.findViewById(R.id.accountDescription)
+        private val tvAccountTransferType: TextView = view.findViewById(R.id.accountTransferType)
+        private val ivAccount: ImageView = view.findViewById(R.id.accountImageInRecyclerView)
 
         // The OnClickListener for each account item.
         private val onClickListener: View.OnClickListener = View.OnClickListener {
 
-            // Get the position of the item.
-            val position = adapterPosition
-            Toast.makeText(itemView.context, "You clicked on item ${position + 1}", Toast.LENGTH_SHORT).show()
+            // Get the account at the position clicked.
+            val account: Account = dataSet[adapterPosition]
+
+            // Create a new intent.
+            val intent = Intent(view.context, DetailsActivity::class.java)
+
+            // Add the extra to the intent.
+            intent.putExtra("account", account)
+
+            // Launch the Activity.
+            view.context.startActivity(intent)
         }
 
+        /**
+         * Binds the account information to the UI.
+         */
         fun bind(account: Account) {
 
             // Set the text for the account details.
-            accountName.text = account.name
-            accountDescription.text = account.description
-            accountTransferType.text = account.getTransferType()
+            tvAccountName.text = account.accountName
+            tvAccountDescription.text = account.description
+            tvAccountTransferType.text = account.getTransferType()
 
             // Choose the account image that will be displayed.
-            if (account.type == "bank") {
-                accountImage.setImageResource(R.drawable.baseline_account_balance_black_48pt_1x)
+            if (account.accountType == Account.BANK) {
+                ivAccount.setImageResource(R.drawable.baseline_account_balance_black_48pt_1x)
             } else {
-                accountImage.setImageResource(R.drawable.baseline_credit_card_black_48pt_1x)
+
+                // Else, the account is a card.
+                ivAccount.setImageResource(R.drawable.baseline_credit_card_black_48pt_1x)
             }
 
             // Set the OnClickListener.

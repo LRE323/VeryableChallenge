@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Veryable Coding Challenge</string>
     <string name="welcome_to_veryable_coding_challenge">Welcome To Veryable Coding Challenge</string>
-    <string name="accounts_activity_toolbar_title">ACCOUNTS</string>
+    <string name="accounts_toolbar_title">ACCOUNTS</string>
+    <string name="details_toolbar_title">DETAILS</string>
+    <string name="button_done_text">Done</string>
+    <string name="button_back_desc">The back arrow in DetailsActivity.</string>
+    <string name="account_image_details_activity_desc">The account type image in DetailsActivity.</string>
+    <string name="account_image_accounts_activity_desc">The account type image for each account in the RecyclerView.</string>
+    <string name="right_side_arrow"><![CDATA[>]]></string>
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_gray"
+    tools:context=".activity.DetailsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/toolbar_title"
+            android:text="@string/details_toolbar_title" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDetails">
+
+
+        <ImageView
+            android:id="@+id/accountImageInDetailsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/account_image_details_activity_desc"
+            tools:src="@drawable/baseline_account_balance_black_48pt_2x" />
+
+        <TextView
+            android:id="@+id/accountNameInDetailsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            tools:text="WF Checking Account" />
+
+        <TextView
+            android:id="@+id/accountDescriptionInDetailsActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/light_gray"
+            android:textSize="14sp"
+            tools:text="Wells Fargo (x2356)" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonDone"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/button_done_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/buttonBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        android:contentDescription="@string/button_back_desc"
+        android:focusable="true"
+        android:src="@drawable/ic_action_name"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbarDetails"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

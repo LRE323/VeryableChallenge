@@ -3,6 +3,9 @@ package com.veryable.android.rest
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * The APIClient is a single object so that there is only one instance of Retrofit.
+ */
 object APIClient {
 
     // AWS URL
@@ -13,7 +16,7 @@ object APIClient {
     private val gsonConverterFactory = GsonConverterFactory.create()
 
     // The single instance of Retrofit
-    val retrofit =
+    val retrofit: Retrofit =
         Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(gsonConverterFactory).build()
 
 }

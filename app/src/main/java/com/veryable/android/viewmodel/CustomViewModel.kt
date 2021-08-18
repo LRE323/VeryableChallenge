@@ -12,7 +12,7 @@ import retrofit2.awaitResponse
 
 class CustomViewModel(private val repository: Repository) : ViewModel() {
 
-    // The list of accounts.
+    // The list of accounts retrieved from the network, initially empty.
     val accountsLiveData = MutableLiveData<List<Account>>()
 
     // A message regarding the result of the network request.
@@ -50,9 +50,13 @@ class CustomViewModel(private val repository: Repository) : ViewModel() {
 
             } catch (e: Exception) {
                 Log.i("Request", e.toString())
-                networkRequestMessage.value = "Network request failed"
+                networkRequestMessage.value = NETWORK_REQUEST_FAILED
             }
         }
+    }
+
+    companion object {
+        const val NETWORK_REQUEST_FAILED = "Network request failed"
     }
 
 

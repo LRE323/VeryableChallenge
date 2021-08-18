@@ -19,7 +19,7 @@
 
         <TextView
             style="@style/toolbar_title"
-            android:text="@string/accounts_activity_toolbar_title" />
+            android:text="@string/accounts_toolbar_title" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -33,11 +33,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarAccounts" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarAccounts" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
