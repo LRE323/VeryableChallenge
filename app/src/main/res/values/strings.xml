@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Veryable Coding Challenge</string>
     <string name="welcome_to_veryable_coding_challenge">Welcome To Veryable Coding Challenge</string>
+    <string name="accounts_activity_toolbar_title">ACCOUNTS</string>
 </resources>
