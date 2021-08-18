@@ -24,6 +24,15 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <View
+        android:id="@+id/detailsToolbarBorder"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/toolbar_border_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarDetails" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +40,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarDetails">
+        app:layout_constraintTop_toBottomOf="@+id/detailsToolbarBorder">
 
 
         <ImageView
@@ -85,6 +94,7 @@
         android:clickable="true"
         android:contentDescription="@string/button_back_desc"
         android:focusable="true"
+        android:foreground="?selectableItemBackground"
         android:src="@drawable/ic_action_name"
         app:layout_constraintBottom_toBottomOf="@+id/toolbarDetails"
         app:layout_constraintStart_toStartOf="parent"

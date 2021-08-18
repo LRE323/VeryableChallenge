@@ -7,6 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="12dp"
     android:background="@color/white"
+    android:elevation="6dp"
+    android:foreground="?selectableItemBackground"
     android:orientation="vertical">
 
     <ImageView
@@ -15,6 +17,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/account_image_accounts_activity_desc"
         android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/baseline_account_balance_black_48pt_1x" />
@@ -30,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/accountName"
+            android:id="@+id/accountNameInRv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -40,7 +43,7 @@
             tools:text="My Credit Card" />
 
         <TextView
-            android:id="@+id/accountDescription"
+            android:id="@+id/accountDescriptionInRv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"

@@ -1,7 +1,8 @@
 package com.veryable.android.activity
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,9 +33,17 @@ class AccountsActivity : AppCompatActivity() {
      */
     private val adapter = CustomAdapter()
 
+    /**
+     * The TextView for the status of the network request.
+     */
+    private lateinit var tvNetworkStatus: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_accounts)
+
+        // Initialize the network status TextView.
+        tvNetworkStatus = findViewById(R.id.tvNetworkStatus)
 
         // Initialize the RecyclerView.
         initRecyclerView()
@@ -76,11 +85,27 @@ class AccountsActivity : AppCompatActivity() {
         // Observe the list of accounts.
         viewModel.accountsLiveData.observe(this, observerAccounts)
 
-        // Create the observer for the network request message.
+        // Create the observer for the network request result.
         val observerNetworkRequestMessage = Observer<String> { message ->
 
-            // Show a toast with the network request message.
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            // If the response is successful.
+            if (message == CustomViewModel.SUCCESSFUL_RESPONSE) {
+
+                // Display the RecyclerView.
+                rvAccounts.visibility = View.VISIBLE
+
+                // Hide the network status text.
+                tvNetworkStatus.visibility = View.GONE
+            }
+
+            // If the network request fails.
+            if (message == CustomViewModel.NETWORK_REQUEST_FAILED) {
+
+                // Display text saying the network request failed.
+                tvNetworkStatus.text = getString(R.string.network_request_failed)
+
+            }
+
         }
 
         // Observe the network request message.

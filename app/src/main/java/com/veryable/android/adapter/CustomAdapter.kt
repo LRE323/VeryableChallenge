@@ -66,8 +66,8 @@ class CustomAdapter :
     inner class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         // The UI objects that will display account details.
-        private val tvAccountName: TextView = view.findViewById(R.id.accountName)
-        private val tvAccountDescription: TextView = view.findViewById(R.id.accountDescription)
+        private val tvAccountName: TextView = view.findViewById(R.id.accountNameInRv)
+        private val tvAccountDescription: TextView = view.findViewById(R.id.accountDescriptionInRv)
         private val tvAccountTransferType: TextView = view.findViewById(R.id.accountTransferType)
         private val ivAccount: ImageView = view.findViewById(R.id.accountImageInRecyclerView)
 

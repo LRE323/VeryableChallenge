@@ -37,25 +37,31 @@ class CustomViewModel(private val repository: Repository) : ViewModel() {
 
                     Log.i("Request", "Successful response")
 
+                    // Update the status of the network request.
+                    networkRequestMessage.value = SUCCESSFUL_RESPONSE
+
                     // Get the list of accounts from the response body.
                     val accounts: List<Account>? = response.body()
 
                     // Update the LiveData.
                     accountsLiveData.value = accounts
 
+
                 } else {
                     Log.i("Request", "Unsuccessful response")
-                    networkRequestMessage.value = "Unsuccessful response"
                 }
 
             } catch (e: Exception) {
                 Log.i("Request", e.toString())
+
+                // Update the status of the network request.
                 networkRequestMessage.value = NETWORK_REQUEST_FAILED
             }
         }
     }
 
     companion object {
+        const val SUCCESSFUL_RESPONSE = "Successful response"
         const val NETWORK_REQUEST_FAILED = "Network request failed"
     }
 

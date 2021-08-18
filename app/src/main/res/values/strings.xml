@@ -8,4 +8,6 @@
     <string name="account_image_details_activity_desc">The account type image in DetailsActivity.</string>
     <string name="account_image_accounts_activity_desc">The account type image for each account in the RecyclerView.</string>
     <string name="right_side_arrow"><![CDATA[>]]></string>
+    <string name="network_status_initial_text">Fetching data, please wait…</string>
+    <string name="network_request_failed">No internet connection</string>
 </resources>
