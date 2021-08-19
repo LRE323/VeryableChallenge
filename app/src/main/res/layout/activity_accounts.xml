@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/network_status_initial_text"
+        android:textColor="@color/gray"
         app:layout_constraintBottom_toBottomOf="@+id/accountsRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/accountsRecyclerView"
