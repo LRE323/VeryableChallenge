@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.veryable.android.model.Account
 import com.veryable.android.rest.Repository
 import kotlinx.coroutines.launch
-import retrofit2.awaitResponse
+import retrofit2.Response
 
 
 class CustomViewModel(private val repository: Repository) : ViewModel() {
@@ -22,20 +22,21 @@ class CustomViewModel(private val repository: Repository) : ViewModel() {
     /**
      * Gets the accounts from AWS.
      */
+
     fun getAccounts() {
 
-        // Launch a new coroutine for the network request.
+        // Start a new coroutine for the network request.
         viewModelScope.launch {
 
-            try {
+            // Attempt to get a response from the network.
+            val response: Response<List<Account>>? = repository.getAccounts()
 
-                // Get the response from the network.
-                val response = repository.getAccounts().awaitResponse()
+            // If the response is not null.
+            if (response != null) {
 
                 // If the response is successful.
                 if (response.isSuccessful) {
-
-                    Log.i("Request", "Successful response")
+                    Log.i("Network request", "Successful response")
 
                     // Update the status of the network request.
                     networkRequestMessage.value = SUCCESSFUL_RESPONSE
@@ -46,13 +47,10 @@ class CustomViewModel(private val repository: Repository) : ViewModel() {
                     // Update the LiveData.
                     accountsLiveData.value = accounts
 
-
-                } else {
-                    Log.i("Request", "Unsuccessful response")
+                } else { // If the response is not successful.
+                    Log.i("Network request", "Unsuccessful response")
                 }
-
-            } catch (e: Exception) {
-                Log.i("Request", e.toString())
+            } else { // If the response is null (network request failed).
 
                 // Update the status of the network request.
                 networkRequestMessage.value = NETWORK_REQUEST_FAILED

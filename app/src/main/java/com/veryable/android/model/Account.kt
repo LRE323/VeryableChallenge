@@ -22,7 +22,7 @@ data class Account(
     ) : Parcelable {
 
     /**
-     * Returns the transfer type base on the account type.
+     * Returns the transfer type, based on the account type.
      */
     fun getTransferType(): String {
 
